@@ -1,0 +1,45 @@
+---
+import Calendar from '../components/icons/Calendar.astro'
+
+const {
+	CompanyLogo,
+	Icon,
+	class: className,
+	companyName,
+	date,
+	discordUrl,
+	title,
+	status
+} = Astro.props
+---
+<article class={`${className} group relative transition col-span-1 border border-black`}>
+	<div class='absolute -z-10 bg-black -right-4 -bottom-4 w-full h-full group-hover:-right-2 group-hover:-bottom-2 group-hover:bg-black/80 transition-all'></div>
+	<a href={discordUrl} class='block overflow-hidden relative py-12 px-4' target='_blank' rel='noopener noreferrer'>
+		<div class='absolute opacity-10 -right-0 -top-0'>
+			<Icon />
+		</div>
+
+		<strong class='rounded-full px-2 py-1 text-xs bg-black/80 text-white'>{status === 'open' ? '¡Abierto!' : 'Cerrado' }</strong>
+
+		{date && (
+			<div class='mt-2 flex gap-x-1 items-center text-xs'>
+				<Calendar />
+				<span>{date}</span>
+			</div>
+		)}
+
+		<h2 class='tracking-tight leading-tight mt-4 font-bold text-2xl mb-4 text-black/80'>{title}</h2>
+
+		{CompanyLogo && (
+			<header class='mb-8 w-24'>
+				<CompanyLogo />
+			</header>
+		)}
+
+
+		<span class='group-hover:bg-white/30 font-semibold transition rounded px-4 py-2 border border-black/80 text-center w-full block'>
+			{status === 'open' ? '¡Quiero participar!' : 'Cerrado'}
+		</span>
+	</a>
+
+</article>

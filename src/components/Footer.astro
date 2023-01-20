@@ -1,0 +1,31 @@
+---
+import { ROUTES, SOCIAL } from '../consts'
+import { Icon } from 'astro-icon'
+import Heart from './icons/Heart.astro';
+---
+
+<footer>
+	<div class='flex flex-col items-center mt-48 gap-4 mb-4'>
+		<div class='flex gap-4'>
+			{
+				SOCIAL.map((social) => (
+					<a class='hover:scale-150' href={social.href} target='_blank'>
+						<Icon
+							name={social.icon}
+							aria-label={social.label}
+							class='w-8 h-8'
+							fill='currentColor'
+							width='24'
+							height='24'
+						/>
+					</a>
+				))
+			}
+		</div>
+
+		<p class='flex gap-x-1 w-72 flex-wrap text-center items-center justify-center m-auto'>
+			Una iniciativa de <a href='https://twitch.tv/midudev' target='_blank'>midudev</a>
+		</p>
+
+	</div>
+</footer>

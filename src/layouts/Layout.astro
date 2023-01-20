@@ -1,0 +1,58 @@
+---
+import { SEO_INFO } from '../consts'
+
+import '@fontsource/ibm-plex-sans/400.css'
+import '@fontsource/ibm-plex-sans/600.css'
+import '@fontsource/ibm-plex-sans/700.css'
+import Manita from '../components/icons/Manita.astro'
+
+type Props = { title: string }
+
+const { title } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		{SEO_INFO.map((tag) => <meta name={tag.name} content={tag.content} />)}
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<title>{title}</title>
+	</head>
+
+	<body class='bg-white'>
+		<div class='container m-auto px-8'>
+			<header class='color-white flex pt-8 gap-x-4'>
+				<div class=' flex items-center justify-center'>
+					<Manita />
+					<div>
+						<span class='bg-black flex justify-center items-center text-white py-0.5 px-1 font-semibold'>{'{mueve las manitas}'}</span>
+					</div>
+				</div>
+
+				<div class='flex items-center px-4'>
+					<span class='block h-[1px] bg-zinc-500 w-20'></span>
+				</div>
+
+				<nav class='flex'>
+					<ul class='flex gap-x-8 items-center '>
+						<li>
+							<a class='hover:border-b-2 hover:border-black font-bold' href='/que-es-esto'>¿Qué es esto?</a>
+						</li>
+						<li>
+							<a class='hover:border-b-2 hover:border-black font-bold' href='https://twitch.tv/midudev' target='_blank' rel='noopener noreferer'>Twitch</a>
+						</li>
+						<li>
+							<a class='hover:border-b-2 hover:border-black font-bold' href='https://discord.gg/midudev' target='_blank' rel='noopener noreferer'>Discord</a>
+						</li>
+					</ul>
+				</nav>
+
+			</header>
+
+			<slot />
+		</div>
+	</body>
+</html>

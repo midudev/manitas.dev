@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Footer from '../components/Footer.astro'
+import { PERSONAL_INFO } from '../consts'
+import BrainElectricity from '../components/icons/Brain-Electricity.astro'
+import Technologies from '../components/Technologies.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import Cohere from '../components/logos/Cohere.astro'
+import Message from '../components/icons/Message.astro'
+import Twilio from '../components/logos/Twilio.astro'
+
+// const notionItems = await getNotionItems()
+
+
+// const images = await Promise.all(
+// 	notionItems.map(async ({ plain_text }) => {
+// 		const index = plain_text.lastIndexOf(' ')
+// 		const label = plain_text.substring(0, index)
+// 		const href = plain_text.substring(index + 1)
+// 		const size = await probe(href)
+
+// 		return { label, href, size }
+// 	})
+// )
+
+const images = []
+---
+
+<Layout title={PERSONAL_INFO.title}>
+	<main class='grid grid-cols-5 gap-x-8'>
+		<section class='pt-24 col-span-3'>
+			<Technologies />
+			<h1 class='mt-4 tracking-tighter leading-tight text-[64px] font-bold max-w-2xl mb-6'>
+				Mejora en programación
+				con proyectos web
+			</h1>
+			<h2 class='opacity-80 text-xl max-w-md leading-loose'>
+				Participa en retos de programación, mejora tus habilidades, construye tu portfolio con proyectos y gana premios.
+			</h2>
+		</section>
+
+		<section class='col-span-2'>
+			<div class='grid grid-cols-2 grid-flow-row gap-x-8 mt-14 odd:[&>article]:-mt-20 odd:[&>article]:mb-20'>
+				<ProjectCard
+					CompanyLogo={Cohere}
+					Icon={BrainElectricity}
+					companyName='co:here'
+					class='bg-purple-300 hover:bg-purple-400'
+					date='Participa hasta el 7 de febrero'
+					status='open'
+					title='Crea un producto de IA usando la API de co:here'
+					discordUrl='https://discord.com/channels/741237973663612969/1065935439380365322'
+				/>
+
+				<ProjectCard
+					class='bg-yellow-300 hover:bg-yellow-400'
+					CompanyLogo={Twilio}
+					Icon={Message}
+					status='closed'
+					title='Desarrolla un chat en tiempo real con Twilio'
+					discordUrl='https://discord.com/channels/741237973663612969/1065935439380365322'
+				/>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
